@@ -1,22 +1,12 @@
-# Welcome to your Lovable project
+# Emotion Guesser Game
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/bc743b5f-3794-4081-87b0-a161c359787d
+A web game where users guess the emotion shown in a person's facial expression. Built with Vite, TypeScript, React, shadcn-ui, and Tailwind CSS.
 
 ## How can I edit this code?
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/bc743b5f-3794-4081-87b0-a161c359787d) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+You can work locally using your own IDE:
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
@@ -52,8 +42,6 @@ npm run dev
 
 ## What technologies are used for this project?
 
-This project is built with:
-
 - Vite
 - TypeScript
 - React
@@ -62,12 +50,8 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/bc743b5f-3794-4081-87b0-a161c359787d) and click on Share -> Publish.
+You can deploy this project using your preferred static hosting provider (e.g., Vercel, Netlify, GitHub Pages, etc.).
 
-## Can I connect a custom domain to my Lovable project?
+## Can I connect a custom domain?
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Yes! Refer to your hosting provider's documentation for connecting a custom domain.
