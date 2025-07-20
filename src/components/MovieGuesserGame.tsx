@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Movie, getRandomMovie } from "@/data/movies";
+import { Expression, expressions } from "@/data/expressions";
 import { GameHeader } from "@/components/GameHeader";
-import { MovieClue } from "@/components/MovieClue";
+import { ExpressionClue } from "@/components/ExpressionClue";
 import { GuessInput } from "@/components/GuessInput";
 import { HintsDisplay } from "@/components/HintsDisplay";
 import { GuessHistory } from "@/components/GuessHistory";
@@ -17,7 +17,7 @@ interface Guess {
 
 export const MovieGuesserGame = () => {
   const { toast } = useToast();
-  const [currentMovie, setCurrentMovie] = useState<Movie | null>(null);
+  const [currentExpression, setCurrentExpression] = useState<Expression | null>(null);
   const [guesses, setGuesses] = useState<Guess[]>([]);
   const [revealedHints, setRevealedHints] = useState<string[]>([]);
   const [isGameWon, setIsGameWon] = useState(false);
@@ -35,8 +35,8 @@ export const MovieGuesserGame = () => {
   }, []);
 
   const startNewGame = () => {
-    const newMovie = getRandomMovie();
-    setCurrentMovie(newMovie);
+    const newExpression = expressions[Math.floor(Math.random() * expressions.length)];
+    setCurrentExpression(newExpression);
     setGuesses([]);
     setRevealedHints([]);
     setIsGameWon(false);
@@ -44,20 +44,16 @@ export const MovieGuesserGame = () => {
     setIsAnswerRevealed(false);
     
     toast({
-      title: "🎬 New Movie Challenge!",
-      description: "Look at the visual clue and guess the movie!",
+      title: "😊 New Expression Challenge!",
+      description: "Look at the facial expression and guess the emotion!",
     });
   };
 
   const handleGuess = (guess: string) => {
-    if (!currentMovie || isGameWon || isGameOver) return;
+    if (!currentExpression || isGameWon || isGameOver) return;
 
     const normalizedGuess = guess.toLowerCase().trim();
-    const isCorrect = currentMovie.acceptedAnswers.some(answer => 
-      answer.toLowerCase() === normalizedGuess ||
-      normalizedGuess.includes(answer.toLowerCase()) ||
-      answer.toLowerCase().includes(normalizedGuess)
-    );
+    const isCorrect = currentExpression.emotion.toLowerCase() === normalizedGuess;
 
     const newGuess: Guess = { guess, isCorrect };
     const updatedGuesses = [...guesses, newGuess];
@@ -68,7 +64,7 @@ export const MovieGuesserGame = () => {
       setIsAnswerRevealed(true);
       toast({
         title: "🎉 Congratulations!",
-        description: `You guessed correctly! The movie is "${currentMovie.title}"`,
+        description: `You guessed correctly! The emotion is "${currentExpression.emotion}"`,
       });
     } else {
       const remainingGuesses = maxGuesses - updatedGuesses.length;
@@ -91,14 +87,14 @@ export const MovieGuesserGame = () => {
   };
 
   const handleRequestHint = () => {
-    if (!currentMovie || !canRequestHint) return;
+    if (!currentExpression || !canRequestHint) return;
 
-    const nextHint = currentMovie.hints[hintsUsed];
+    const nextHint = currentExpression.hints[hintsUsed];
     if (nextHint) {
       setRevealedHints([...revealedHints, nextHint]);
       toast({
         title: "💡 Hint Revealed!",
-        description: "Use this clue to help you guess the movie!",
+        description: "Use this clue to help you guess the emotion!",
       });
     }
   };
@@ -108,16 +104,16 @@ export const MovieGuesserGame = () => {
     setIsGameOver(true);
     toast({
       title: "Answer Revealed!",
-      description: `The movie was "${currentMovie?.title}". Ready for a new challenge?`,
+      description: `The emotion was "${currentExpression?.emotion}". Ready for a new challenge?`,
     });
   };
 
-  if (!currentMovie) {
+  if (!currentExpression) {
     return (
       <div className="min-h-screen bg-game-bg p-4 flex items-center justify-center">
         <div className="text-center">
           <div className="text-2xl font-bold text-primary mb-4">Loading...</div>
-          <div className="text-muted-foreground">Preparing your movie challenge!</div>
+          <div className="text-muted-foreground">Preparing your expression challenge!</div>
         </div>
       </div>
     );
@@ -135,14 +131,14 @@ export const MovieGuesserGame = () => {
           maxHints={maxHints}
         />
 
-        <MovieClue
-          clueImage={currentMovie.clueImage}
-          movieTitle={currentMovie.title}
+        <ExpressionClue
+          clueImage={currentExpression.image}
+          emotion={currentExpression.emotion}
           isRevealed={isAnswerRevealed}
         />
 
         <HintsDisplay
-          hints={currentMovie.hints}
+          hints={currentExpression.hints}
           revealedHints={revealedHints}
         />
 

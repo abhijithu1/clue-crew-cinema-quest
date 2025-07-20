@@ -23,7 +23,7 @@ export const GameHeader = ({
       <div className="flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <Trophy className="h-8 w-8 text-accent" />
-          <h1 className="text-3xl font-bold text-primary">Movie Guesser</h1>
+          <h1 className="text-3xl font-bold text-primary">Emotion Guesser</h1>
         </div>
         
         <div className="flex items-center gap-6">

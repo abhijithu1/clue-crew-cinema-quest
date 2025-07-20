@@ -1,3 +1,4 @@
+// Facial expression clue component for the guessing game
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -35,4 +36,4 @@ export const ExpressionClue = ({ clueImage, emotion, isRevealed }: ExpressionClu
       </div>
     </Card>
   );
-};
+}; 

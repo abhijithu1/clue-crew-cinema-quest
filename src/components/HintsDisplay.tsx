@@ -16,7 +16,7 @@ export const HintsDisplay = ({ hints, revealedHints }: HintsDisplayProps) => {
       <div className="space-y-4">
         <div className="text-center">
           <Badge variant="outline" className="text-lg px-4 py-2 border-accent text-accent-foreground">
-            💡 Hints
+            💡 Emotion Hints
           </Badge>
         </div>
         
@@ -37,7 +37,7 @@ export const HintsDisplay = ({ hints, revealedHints }: HintsDisplayProps) => {
         </div>
         
         <div className="text-center text-sm text-muted-foreground">
-          {revealedHints.length} of {hints.length} hints revealed
+          {revealedHints.length} of {hints.length} hints revealed to help you guess the emotion
         </div>
       </div>
     </Card>

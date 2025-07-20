@@ -44,7 +44,7 @@ export const GuessInput = ({
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="text-center">
           <h3 className="text-xl font-semibold text-foreground mb-2">
-            What movie is this? 🤔
+            What emotion is this? 😊
           </h3>
           <p className="text-muted-foreground">
             You have {guessesLeft} guess{guessesLeft !== 1 ? 'es' : ''} left
@@ -54,7 +54,7 @@ export const GuessInput = ({
         <div className="flex gap-2">
           <Input
             type="text"
-            placeholder="Type your guess here..."
+            placeholder="Type the emotion you see... (e.g., happy, sad)"
             value={guess}
             onChange={(e) => setGuess(e.target.value)}
             className="text-lg h-12 border-2 border-primary/20 focus:border-primary"

@@ -16,7 +16,7 @@ export const GuessHistory = ({ guesses }: GuessHistoryProps) => {
       <div className="space-y-4">
         <div className="text-center">
           <Badge variant="outline" className="text-lg px-4 py-2">
-            📝 Your Guesses
+            📝 Your Emotion Guesses
           </Badge>
         </div>
         
